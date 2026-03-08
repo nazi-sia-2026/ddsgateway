@@ -32,7 +32,7 @@ class User2Controller extends Controller {
         return $this->successResponse($this->user2Service->obtainUsers2());
     }
     public function add(Request $request){
-        return $this->successResponse($this->user2Service->addUsers2($request->all()), Response::HTTP_CREATED);
+        return $this->successResponse($this->user2Service->createUsers2($request->all()), Response::HTTP_CREATED);
     }
     /**
      * Obtain and show one user from the users2 service
@@ -40,5 +40,12 @@ class User2Controller extends Controller {
      */
     public function show($id){
         return $this->successResponse($this->user2Service->obtainUser2($id));
+    }
+    /**
+     * Update an existing user from the users2 service
+     * @return Illuminate\Http\Response
+     */
+    public function update(Request $request, $id){
+        return $this->successResponse($this->user2Service->editUser2($request->all(), $id));
     }
 }

@@ -28,5 +28,25 @@ class User1Service{
      * Obtain one user from the users1 service
      * @return string
      */
+    public function createUsers1($id)
+    {
+        return $this->performRequest('POST', '/users', $data);
+    }
+    /**
+     * Obtain one user from the users1 service
+     * @return string
+     */
+    public function obtainUser1($id)
+    {
+        return $this->performRequest('GET', "/users/{$id}");
+    }
+    /**
+     * Update an existing user from the users1 service
+     * @return string
+     */
+    public function editUser1($data, $id)
+    {
+        return $this->performRequest('PUT', "/users/{$id}", $data);
+    }
     
 }

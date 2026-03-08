@@ -33,13 +33,20 @@ class User1Controller extends Controller {
     }
 
     public function add(Request $request){
-        return $this->successResponse($this->user1Service->addUsers1($request->all()), Response::HTTP_CREATED);
+        return $this->successResponse($this->user1Service->createUsers1($request->all()), Response::HTTP_CREATED);
     }
     /**
-     * Obtain and sgow one user from the users1 service
+     * Obtain and show one user from the users1 service
      * @return Illuminate\Http\Response
      */
     public function show($id){
         return $this->successResponse($this->user1Service->obtainUser1($id));
+    }
+    /**
+     * Update an existing user from the users1 service
+     * @return Illuminate\Http\Response
+     */
+    public function update(Request $request, $id){
+        return $this->successResponse($this->user1Service->editUser1($request->all(), $id));
     }
 }
