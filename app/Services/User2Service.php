@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Services;
-use App\Traits\ConsumeExternalService;
+use App\Traits\ConsumesExternalService;
 
 class User2Service{
-    use ConsumeExternalService;
+    use ConsumesExternalService;
     /**
      * The base uri to consume the users2 service
      * @var string
@@ -46,5 +46,13 @@ class User2Service{
     public function editUser2($data, $id)
     {
         return $this->performRequest('PUT', "/users/{$id}", $data);
+    }
+    /**
+     * Remove an existing user from the users1 service
+     * @return string
+     */
+    public function deleteUser2($id)
+    {
+        return $this->performRequest('DELETE', "/users/{$id}");
     }
 }
