@@ -25,11 +25,10 @@ $app = new Laravel\Lumen\Application(
 
 $app->withFacades();
 
-$app->withEloquent();
-/**
- * Registering config files
- */
 $app->configure('services');
+
+$app->withEloquent();
+
 
 /*
 |--------------------------------------------------------------------------

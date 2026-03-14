@@ -12,9 +12,18 @@ trait ConsumesExternalService
      */
     public function performRequest($method, $requestUrl, $form_params = [], $headers = [])
     {
-        $client = new Client(['base_uri' => $this->baseUri,]);
-        $response = $client->request($method, $requestUrl, ['form_params' => $form_params, 'headers' => $headers]);
+    // If baseUri is empty, this will throw a clear error instead of a cURL crash
+    if (empty($this->baseUri)) {
+        throw new \Exception("Gateway Error: Base URI for the service is not defined in .env or services.php");
+    }
 
-        return $response->getBody()->getContents();
+    $client = new Client(['base_uri' => $this->baseUri]);
+    $response = $client->request($method, $requestUrl, [
+        'form_params' => $form_params, 
+        'headers' => $headers
+    ]);
+    
+    return $response->getBody()->getContents();
     }
 }
+

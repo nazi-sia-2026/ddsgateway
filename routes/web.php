@@ -32,3 +32,13 @@ $router->get('/users2/{id}', 'User2Controller@show');
 $router->put('/users2/{id}','User2Controller@update');
 $router->patch('/users2/{id}','User2Controller@update');
 $router->delete('/users2/{id}','User2Controller@delete');
+
+$router->get('/debug-config', function () {
+    $manual_load = require base_path('config/services.php');
+    
+    return [
+        'via_config' => config('services.users1.base_uri'),
+        'via_env'    => env('USERS1_SERVICE_BASE_URI'),
+        'manual_file_load' => $manual_load['users1']['base_uri'] ?? 'File could not be read',
+    ];
+});

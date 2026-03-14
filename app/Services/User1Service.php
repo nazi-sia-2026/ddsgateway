@@ -14,6 +14,7 @@ class User1Service{
     public function __construct()
     {
         $this->baseUri = config('services.users1.base_uri');
+        //$this->baseUri = 'http://127.0.0.1:8000/';
     }
 
     /**
@@ -22,15 +23,15 @@ class User1Service{
      */
     public function obtainUsers1()
     {
-        return $this->performRequest('GET', '/users');
+        return $this->performRequest('GET', '/users1');
     }
     /**
      * Obtain one user from the users1 service
      * @return string
      */
-    public function createUsers1($id)
+    public function createUsers1($data)
     {
-        return $this->performRequest('POST', '/users', $data);
+        return $this->performRequest('POST', '/users1', $data);
     }
     /**
      * Obtain one user from the users1 service
@@ -38,7 +39,7 @@ class User1Service{
      */
     public function obtainUser1($id)
     {
-        return $this->performRequest('GET', "/users/{$id}");
+        return $this->performRequest('GET', "/users1/{$id}");
     }
     /**
      * Update an existing user from the users1 service
@@ -46,7 +47,7 @@ class User1Service{
      */
     public function editUser1($data, $id)
     {
-        return $this->performRequest('PUT', "/users/{$id}", $data);
+        return $this->performRequest('PUT', "/users1/{$id}", $data);
     }
     /**
      * Remove an existing user from the users1 service
@@ -54,7 +55,7 @@ class User1Service{
      */
     public function deleteUser1($id)
     {
-        return $this->performRequest('DELETE', "/users/{$id}");
+        return $this->performRequest('DELETE', "/users1/{$id}");
     }
     
 }
